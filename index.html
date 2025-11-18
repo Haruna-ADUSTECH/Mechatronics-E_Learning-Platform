@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechatronics E-Learning - ADUSTECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #006400;
+            --light-green: #e8f5e8;
+            --accent-green: #4CAF50;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #666666;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #3d8b40;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--light-green);
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(0, 100, 0, 0.1);
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: 5px;
+            padding: 5px 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 200px;
+            background: transparent;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 100, 0, 0.8), rgba(0, 100, 0, 0.9)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-green);
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--primary-green);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-img {
+            height: 180px;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 3rem;
+        }
+
+        .resource-content {
+            padding: 25px;
+        }
+
+        .resource-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+        }
+
+        .resource-content p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .resource-link {
+            display: inline-block;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        /* Video Section */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-placeholder {
+            height: 180px;
+            background-color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .video-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .video-content {
+            padding: 20px;
+        }
+
+        .video-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-green);
+        }
+
+        .video-content p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        .modal-title {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .resource-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .resource-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-list a {
+            color: var(--accent-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .resource-list a:hover {
+            color: var(--primary-green);
+        }
+
+        .resource-list i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+
+        .footer-section p, .footer-section a {
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resource-grid, .video-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- ADUSTECH Logo -->
+                    <img src="https://adustech.edu.ng/wp-content/uploads/2022/02/cropped-ADUSTECH-LOGO-1.png" alt="ADUSTECH Logo">
+                </div>
+                <div class="logo-text">
+                    <h1>ADUSTECH Mechatronics</h1>
+                    <p>Faculty of Engineering - E-Learning Platform</p>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline" id="loginBtn">Login</a>
+                <a href="#" class="btn" id="registerBtn">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#ebooks">E-Books</a></li>
+                <li><a href="#journals">Journals</a></li>
+                <li><a href="#videos">Video Tutorials</a></li>
+                <li><a href="#about">About Department</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search resources..." id="searchInput">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Welcome to Mechatronics E-Learning Platform</h2>
+            <p>Access comprehensive learning resources, e-books, research journals, and video tutorials for all mechatronics engineering courses at ADUSTECH.</p>
+            <a href="#ebooks" class="btn">Explore Resources</a>
+        </div>
+    </section>
+
+    <!-- E-Books Section -->
+    <section id="ebooks">
+        <div class="container">
+            <div class="section-title">
+                <h2>E-Books & Course Materials</h2>
+                <p>Access digital textbooks and learning materials for all mechatronics courses</p>
+            </div>
+            
+            <div class="resource-grid">
+                <!-- Level 100 Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Level 100 Courses</h3>
+                        <p>E-books for introductory courses including Mathematics, Physics, Chemistry, and Computer Science.</p>
+                        <a href="#" class="resource-link" data-level="100">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Level 200 Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Level 200 Courses</h3>
+                        <p>Engineering fundamentals including Engineering Mathematics, Materials Science, and Fluid Mechanics.</p>
+                        <a href="#" class="resource-link" data-level="200">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Level 300 Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Level 300 Courses</h3>
+                        <p>Core mechatronics courses including Electronics, Control Systems, and Manufacturing Technology.</p>
+                        <a href="#" class="resource-link" data-level="300">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Level 400 Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Level 400 Courses</h3>
+                        <p>Advanced topics including Robotics, Automation, Digital Systems, and Industrial Training.</p>
+                        <a href="#" class="resource-link" data-level="400">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Level 500 Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Level 500 Courses</h3>
+                        <p>Specialized courses including MEMS, Power Electronics, and Final Year Project guidance.</p>
+                        <a href="#" class="resource-link" data-level="500">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Elective Courses -->
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-list-alt"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Elective Courses</h3>
+                        <p>Materials for elective courses including Machine Vision, Renewable Energy, and Automotive Engineering.</p>
+                        <a href="#" class="resource-link" data-level="electives">Access Materials <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journals Section -->
+    <section id="journals" style="background-color: var(--light-green);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Journals & Publications</h2>
+                <p>Access the latest research in mechatronics engineering and related fields</p>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>IEEE Journals</h3>
+                        <p>Access IEEE journals on mechatronics, robotics, and automation systems.</p>
+                        <a href="https://ieeexplore.ieee.org/Xplore/home.jsp" class="resource-link" target="_blank">Visit IEEE <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>ScienceDirect</h3>
+                        <p>Access journals on mechatronics, control engineering, and mechanical systems.</p>
+                        <a href="https://www.sciencedirect.com/" class="resource-link" target="_blank">Visit ScienceDirect <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Springer</h3>
+                        <p>Access journals on mechatronics, robotics, and automation engineering.</p>
+                        <a href="https://link.springer.com/" class="resource-link" target="_blank">Visit Springer <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>ResearchGate</h3>
+                        <p>Access research papers and connect with mechatronics researchers worldwide.</p>
+                        <a href="https://www.researchgate.net/" class="resource-link" target="_blank">Visit ResearchGate <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Google Scholar</h3>
+                        <p>Search for mechatronics research papers, theses, and academic publications.</p>
+                        <a href="https://scholar.google.com/" class="resource-link" target="_blank">Visit Google Scholar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Nigerian Journals</h3>
+                        <p>Access Nigerian engineering journals and research publications.</p>
+                        <a href="https://www.ajol.info/" class="resource-link" target="_blank">Visit AJOL <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tutorials Section -->
+    <section id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Video Tutorials & Lectures</h2>
+                <p>Visual learning resources for better understanding of mechatronics concepts</p>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Introduction to Mechatronics</h3>
+                        <p>Basic concepts and applications of mechatronics engineering.</p>
+                        <a href="https://www.youtube.com/watch?v=0g3F1hwg1_w" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Control Systems Engineering</h3>
+                        <p>Fundamentals of control systems and feedback mechanisms.</p>
+                        <a href="https://www.youtube.com/watch?v=ApMz1-MK9AI" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Robotics and Automation</h3>
+                        <p>Principles of robotics, kinematics, and automation systems.</p>
+                        <a href="https://www.youtube.com/watch?v=0C7L7L6B8ik" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>PLC Programming Basics</h3>
+                        <p>Introduction to Programmable Logic Controllers and ladder logic.</p>
+                        <a href="https://www.youtube.com/watch?v=izMC2n6Gp8w" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Sensors and Actuators</h3>
+                        <p>Types of sensors and actuators used in mechatronic systems.</p>
+                        <a href="https://www.youtube.com/watch?v=Z1k2MQ8Kp-0" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="video-content">
+                        <h3>Microcontroller Applications</h3>
+                        <p>Programming and applications of microcontrollers in mechatronics.</p>
+                        <a href="https://www.youtube.com/watch?v=7Wq2J2kKZ_s" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Department Section -->
+    <section id="about" style="background-color: var(--light-green);">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Mechatronics Department</h2>
+                <p>Learn about our programs, faculty, and facilities</p>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>History</h3>
+                        <p>The Mechatronics Engineering program was introduced in 2018 with 35 students at inception.</p>
+                        <a href="https://adustech.edu.ng/about-us/" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Program Overview</h3>
+                        <p>5-year B.Eng. program integrating mechanical systems, electronics, and intelligent control.</p>
+                        <a href="https://adustech.edu.ng/faculty-of-engineering/" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Faculty</h3>
+                        <p>Meet our experienced faculty members from Mechanical, Electrical, and Computer Engineering.</p>
+                        <a href="https://adustech.edu.ng/staff-directory/" class="resource-link" target="_blank">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with the Mechatronics Department</p>
+            </div>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Location</h3>
+                        <p>Faculty of Engineering Building<br>Aliko Dangote University of Science and Technology<br>Wudil, Kano State, Nigeria</p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Email & Phone</h3>
+                        <p>Email: mechatronics@adustech.edu.ng<br>Phone: +234 (0) 806 123 4567<br>Website: <a href="https://adustech.edu.ng" style="color: var(--accent-green);">adustech.edu.ng</a></p>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Office Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 4:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mechatronics Department</h3>
+                    <p>Faculty of Engineering</p>
+                    <p>Aliko Dangote University of Science and Technology</p>
+                    <p>Wudil, Kano State, Nigeria</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/adustechwudil" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/adustechwudil" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/school/adustech" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/c/adustech" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#ebooks">E-Books</a>
+                    <a href="#journals">Journals</a>
+                    <a href="#videos">Video Tutorials</a>
+                    <a href="#about">About Department</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> mechatronics@adustech.edu.ng</p>
+                    <p><i class="fas fa-phone"></i> +234 (0) 806 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Faculty of Engineering Building</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new resources and events.</p>
+                    <div class="search-bar">
+                        <input type="email" placeholder="Your email address" id="newsletterEmail">
+                        <button class="btn" id="subscribeBtn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Mechatronics Department, ADUSTECH. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resource Modal -->
+    <div class="modal" id="resourceModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title" id="modalTitle">Course Materials</h2>
+            <ul class="resource-list" id="resourceList">
+                <!-- Resources will be populated by JavaScript -->
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn" id="downloadAllBtn">Download All as ZIP</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Resource data for different levels
+        const resourceData = {
+            '100': [
+                { name: 'Mathematics for Engineers', type: 'pdf', url: 'https://example.com/resources/math101.pdf' },
+                { name: 'Physics Fundamentals', type: 'pdf', url: 'https://example.com/resources/physics101.pdf' },
+                { name: 'Chemistry for Engineers', type: 'pdf', url: 'https://example.com/resources/chemistry101.pdf' },
+                { name: 'Introduction to Programming', type: 'pdf', url: 'https://example.com/resources/programming101.pdf' },
+                { name: 'Engineering Drawing Basics', type: 'pdf', url: 'https://example.com/resources/drawing101.pdf' }
+            ],
+            '200': [
+                { name: 'Engineering Mathematics I', type: 'pdf', url: 'https://example.com/resources/math201.pdf' },
+                { name: 'Material Science', type: 'pdf', url: 'https://example.com/resources/materials201.pdf' },
+                { name: 'Fluid Mechanics', type: 'pdf', url: 'https://example.com/resources/fluidmech201.pdf' },
+                { name: 'Thermodynamics', type: 'pdf', url: 'https://example.com/resources/thermo201.pdf' },
+                { name: 'Electrical Engineering Principles', type: 'pdf', url: 'https://example.com/resources/electrical201.pdf' }
+            ],
+            '300': [
+                { name: 'Control Systems', type: 'pdf', url: 'https://example.com/resources/control301.pdf' },
+                { name: 'Electronics I', type: 'pdf', url: 'https://example.com/resources/electronics301.pdf' },
+                { name: 'Manufacturing Technology', type: 'pdf', url: 'https://example.com/resources/manufacturing301.pdf' },
+                { name: 'Heat and Mass Transfer', type: 'pdf', url: 'https://example.com/resources/heat301.pdf' },
+                { name: 'Electromechanical Devices', type: 'pdf', url: 'https://example.com/resources/electromechanical301.pdf' }
+            ],
+            '400': [
+                { name: 'Robotics and Automation', type: 'pdf', url: 'https://example.com/resources/robotics401.pdf' },
+                { name: 'Digital Systems and PLCs', type: 'pdf', url: 'https://example.com/resources/digital401.pdf' },
+                { name: 'Sensors and Actuators', type: 'pdf', url: 'https://example.com/resources/sensors401.pdf' },
+                { name: 'Control Engineering', type: 'pdf', url: 'https://example.com/resources/control401.pdf' },
+                { name: 'Power Electronics', type: 'pdf', url: 'https://example.com/resources/power401.pdf' }
+            ],
+            '500': [
+                { name: 'MEMS & VLSI', type: 'pdf', url: 'https://example.com/resources/mems501.pdf' },
+                { name: 'Digital Signal Processing', type: 'pdf', url: 'https://example.com/resources/dsp501.pdf' },
+                { name: 'Automation and Robotics', type: 'pdf', url: 'https://example.com/resources/automation501.pdf' },
+                { name: 'Final Year Project Guide', type: 'pdf', url: 'https://example.com/resources/project501.pdf' },
+                { name: 'Professional Practice', type: 'pdf', url: 'https://example.com/resources/professional501.pdf' }
+            ],
+            'electives': [
+                { name: 'Machine Vision', type: 'pdf', url: 'https://example.com/resources/vision_elective.pdf' },
+                { name: 'Renewable Energy', type: 'pdf', url: 'https://example.com/resources/renewable_elective.pdf' },
+                { name: 'Automotive Engineering', type: 'pdf', url: 'https://example.com/resources/automotive_elective.pdf' },
+                { name: 'Mobile Robotics', type: 'pdf', url: 'https://example.com/resources/mobilerobotics_elective.pdf' },
+                { name: 'Microfabrication Technology', type: 'pdf', url: 'https://example.com/resources/microfab_elective.pdf' }
+            ]
+        };
+
+        // DOM Elements
+        const resourceLinks = document.querySelectorAll('.resource-link[data-level]');
+        const modal = document.getElementById('resourceModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const resourceList = document.getElementById('resourceList');
+        const closeModal = document.getElementById('closeModal');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const newsletterEmail = document.getElementById('newsletterEmail');
+
+        // Open modal with resources for a specific level
+        resourceLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const level = this.getAttribute('data-level');
+                
+                // Set modal title based on level
+                let title = '';
+                switch(level) {
+                    case '100': title = 'Level 100 Course Materials'; break;
+                    case '200': title = 'Level 200 Course Materials'; break;
+                    case '300': title = 'Level 300 Course Materials'; break;
+                    case '400': title = 'Level 400 Course Materials'; break;
+                    case '500': title = 'Level 500 Course Materials'; break;
+                    case 'electives': title = 'Elective Course Materials'; break;
+                }
+                
+                modalTitle.textContent = title;
+                
+                // Populate resource list
+                resourceList.innerHTML = '';
+                if (resourceData[level]) {
+                    resourceData[level].forEach(resource => {
+                        const listItem = document.createElement('li');
+                        const icon = resource.type === 'pdf' ? 'fa-file-pdf' : 'fa-file';
+                        listItem.innerHTML = `
+                            <a href="${resource.url}" target="_blank">
+                                <i class="fas ${icon}"></i> ${resource.name}
+                            </a>
+                        `;
+                        resourceList.appendChild(listItem);
+                    });
+                }
+                
+                // Show modal
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Download all resources
+        downloadAllBtn.addEventListener('click', function() {
+            alert('This would download all resources as a ZIP file. In a real implementation, this would trigger a server-side process.');
+        });
+
+        // Search functionality
+        searchBtn.addEventListener('click', function() {
+            const query = searchInput.value.trim();
+            if (query) {
+                alert(`Searching for: "${query}". In a real implementation, this would filter resources.`);
+            } else {
+                alert('Please enter a search term.');
+            }
+        });
+
+        // Login functionality
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Login form would appear here. In a real implementation, this would open a login modal.');
+        });
+
+        // Register functionality
+        registerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Registration form would appear here. In a real implementation, this would open a registration modal.');
+        });
+
+        // Newsletter subscription
+        subscribeBtn.addEventListener('click', function() {
+            const email = newsletterEmail.value.trim();
+            if (email) {
+                if (validateEmail(email)) {
+                    alert(`Thank you for subscribing with: ${email}`);
+                    newsletterEmail.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            } else {
+                alert('Please enter your email address.');
+            }
+        });
+
+        // Email validation function
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
