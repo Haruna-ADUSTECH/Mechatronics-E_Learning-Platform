@@ -42,6 +42,9 @@
             color: var(--white);
             padding: 15px 0;
             box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-content {
@@ -157,6 +160,37 @@
             color: var(--white);
         }
 
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            border-radius: 5px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--light-green);
+        }
+
+        .nav-links li:hover .dropdown-menu {
+            display: block;
+        }
+
         .search-bar {
             display: flex;
             align-items: center;
@@ -254,6 +288,7 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s, box-shadow 0.3s;
             border-top: 5px solid var(--primary-green);
+            position: relative;
         }
 
         .resource-card:hover {
@@ -421,6 +456,121 @@
             margin-right: 10px;
         }
 
+        /* Dashboard Section */
+        .dashboard {
+            background-color: var(--light-green);
+            padding: 40px 0;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashboard-card i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        .dashboard-card p {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .quick-link-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-link-card i {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .quick-link-card h4 {
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        /* Resource Actions */
+        .resource-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .action-btn:hover {
+            color: var(--accent-green);
+        }
+
+        .action-btn i {
+            margin-right: 5px;
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary-green);
@@ -526,7 +676,7 @@
         }
 
         @media (max-width: 768px) {
-            .resource-grid, .video-container {
+            .resource-grid, .video-container, .dashboard-grid, .quick-links {
                 grid-template-columns: 1fr;
             }
             
@@ -572,9 +722,23 @@
         <div class="container nav-container">
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#ebooks">E-Books</a></li>
-                <li><a href="#journals">Journals</a></li>
-                <li><a href="#videos">Video Tutorials</a></li>
+                <li>
+                    <a href="#ebooks">Resources <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#ebooks">E-Books & Materials</a>
+                        <a href="#journals">Journals</a>
+                        <a href="#videos">Video Tutorials</a>
+                        <a href="#quick-links">Quick Links</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#dashboard">Dashboard <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#progress">My Progress</a>
+                        <a href="#bookmarks">Bookmarks</a>
+                        <a href="#downloads">Downloads</a>
+                    </div>
+                </li>
                 <li><a href="#about">About Department</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -591,6 +755,77 @@
             <h2>Welcome to Mechatronics E-Learning Platform</h2>
             <p>Access comprehensive learning resources, e-books, research journals, and video tutorials for all mechatronics engineering courses at ADUSTECH.</p>
             <a href="#ebooks" class="btn">Explore Resources</a>
+            <a href="#dashboard" class="btn btn-outline" style="margin-left: 15px;">My Dashboard</a>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Dashboard</h2>
+                <p>Track your learning progress and access personalized resources</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Courses in Progress</h3>
+                    <p>3 out of 5 courses completed</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <p>60% Complete</p>
+                    <a href="#progress" class="resource-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>Bookmarked Resources</h3>
+                    <p>12 resources saved for later</p>
+                    <a href="#bookmarks" class="resource-link">View Bookmarks <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Recent Downloads</h3>
+                    <p>8 resources downloaded</p>
+                    <a href="#downloads" class="resource-link">View Downloads <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Achievements</h3>
+                    <p>5 badges earned</p>
+                    <a href="#achievements" class="resource-link">View Achievements <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="quick-links" id="quick-links">
+                <div class="quick-link-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Upcoming Events</h4>
+                    <a href="#events" class="resource-link">View Calendar</a>
+                </div>
+                
+                <div class="quick-link-card">
+                    <i class="fas fa-comments"></i>
+                    <h4>Discussion Forum</h4>
+                    <a href="#forum" class="resource-link">Join Discussion</a>
+                </div>
+                
+                <div class="quick-link-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h4>Help & Support</h4>
+                    <a href="#help" class="resource-link">Get Help</a>
+                </div>
+                
+                <div class="quick-link-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h4>Study Groups</h4>
+                    <a href="#groups" class="resource-link">Find Groups</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -612,6 +847,10 @@
                         <h3>Level 100 Courses</h3>
                         <p>E-books for introductory courses including Mathematics, Physics, Chemistry, and Computer Science.</p>
                         <a href="#" class="resource-link" data-level="100">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="level-100"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="level-100"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -624,6 +863,10 @@
                         <h3>Level 200 Courses</h3>
                         <p>Engineering fundamentals including Engineering Mathematics, Materials Science, and Fluid Mechanics.</p>
                         <a href="#" class="resource-link" data-level="200">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="level-200"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="level-200"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -636,6 +879,10 @@
                         <h3>Level 300 Courses</h3>
                         <p>Core mechatronics courses including Electronics, Control Systems, and Manufacturing Technology.</p>
                         <a href="#" class="resource-link" data-level="300">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="level-300"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="level-300"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -648,6 +895,10 @@
                         <h3>Level 400 Courses</h3>
                         <p>Advanced topics including Robotics, Automation, Digital Systems, and Industrial Training.</p>
                         <a href="#" class="resource-link" data-level="400">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="level-400"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="level-400"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -660,6 +911,10 @@
                         <h3>Level 500 Courses</h3>
                         <p>Specialized courses including MEMS, Power Electronics, and Final Year Project guidance.</p>
                         <a href="#" class="resource-link" data-level="500">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="level-500"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="level-500"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -672,6 +927,10 @@
                         <h3>Elective Courses</h3>
                         <p>Materials for elective courses including Machine Vision, Renewable Energy, and Automotive Engineering.</p>
                         <a href="#" class="resource-link" data-level="electives">Access Materials <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="electives"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="electives"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -695,6 +954,10 @@
                         <h3>IEEE Journals</h3>
                         <p>Access IEEE journals on mechatronics, robotics, and automation systems.</p>
                         <a href="https://ieeexplore.ieee.org/Xplore/home.jsp" class="resource-link" target="_blank">Visit IEEE <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="ieee"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="ieee"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -706,6 +969,10 @@
                         <h3>ScienceDirect</h3>
                         <p>Access journals on mechatronics, control engineering, and mechanical systems.</p>
                         <a href="https://www.sciencedirect.com/" class="resource-link" target="_blank">Visit ScienceDirect <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="sciencedirect"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="sciencedirect"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -717,6 +984,10 @@
                         <h3>Springer</h3>
                         <p>Access journals on mechatronics, robotics, and automation engineering.</p>
                         <a href="https://link.springer.com/" class="resource-link" target="_blank">Visit Springer <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="springer"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="springer"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -728,6 +999,10 @@
                         <h3>ResearchGate</h3>
                         <p>Access research papers and connect with mechatronics researchers worldwide.</p>
                         <a href="https://www.researchgate.net/" class="resource-link" target="_blank">Visit ResearchGate <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="researchgate"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="researchgate"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -739,6 +1014,10 @@
                         <h3>Google Scholar</h3>
                         <p>Search for mechatronics research papers, theses, and academic publications.</p>
                         <a href="https://scholar.google.com/" class="resource-link" target="_blank">Visit Google Scholar <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="google-scholar"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="google-scholar"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -750,6 +1029,10 @@
                         <h3>Nigerian Journals</h3>
                         <p>Access Nigerian engineering journals and research publications.</p>
                         <a href="https://www.ajol.info/" class="resource-link" target="_blank">Visit AJOL <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="nigerian-journals"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="nigerian-journals"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -773,6 +1056,10 @@
                         <h3>Introduction to Mechatronics</h3>
                         <p>Basic concepts and applications of mechatronics engineering.</p>
                         <a href="https://www.youtube.com/watch?v=0g3F1hwg1_w" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="intro-mechatronics"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="intro-mechatronics"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -784,6 +1071,10 @@
                         <h3>Control Systems Engineering</h3>
                         <p>Fundamentals of control systems and feedback mechanisms.</p>
                         <a href="https://www.youtube.com/watch?v=ApMz1-MK9AI" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="control-systems"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="control-systems"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -795,6 +1086,10 @@
                         <h3>Robotics and Automation</h3>
                         <p>Principles of robotics, kinematics, and automation systems.</p>
                         <a href="https://www.youtube.com/watch?v=0C7L7L6B8ik" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="robotics-automation"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="robotics-automation"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -806,6 +1101,10 @@
                         <h3>PLC Programming Basics</h3>
                         <p>Introduction to Programmable Logic Controllers and ladder logic.</p>
                         <a href="https://www.youtube.com/watch?v=izMC2n6Gp8w" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="plc-programming"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="plc-programming"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -817,6 +1116,10 @@
                         <h3>Sensors and Actuators</h3>
                         <p>Types of sensors and actuators used in mechatronic systems.</p>
                         <a href="https://www.youtube.com/watch?v=Z1k2MQ8Kp-0" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="sensors-actuators"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="sensors-actuators"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -828,6 +1131,10 @@
                         <h3>Microcontroller Applications</h3>
                         <p>Programming and applications of microcontrollers in mechatronics.</p>
                         <a href="https://www.youtube.com/watch?v=7Wq2J2kKZ_s" class="resource-link" target="_blank">Watch on YouTube <i class="fas fa-arrow-right"></i></a>
+                        <div class="resource-actions">
+                            <button class="action-btn bookmark-btn" data-resource="microcontrollers"><i class="far fa-bookmark"></i> Bookmark</button>
+                            <button class="action-btn share-btn" data-resource="microcontrollers"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -937,6 +1244,7 @@
                     <a href="#ebooks">E-Books</a>
                     <a href="#journals">Journals</a>
                     <a href="#videos">Video Tutorials</a>
+                    <a href="#dashboard">Dashboard</a>
                     <a href="#about">About Department</a>
                     <a href="#contact">Contact Us</a>
                 </div>
@@ -1038,6 +1346,8 @@
         const registerBtn = document.getElementById('registerBtn');
         const subscribeBtn = document.getElementById('subscribeBtn');
         const newsletterEmail = document.getElementById('newsletterEmail');
+        const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
+        const shareBtns = document.querySelectorAll('.share-btn');
 
         // Open modal with resources for a specific level
         resourceLinks.forEach(link => {
@@ -1130,6 +1440,25 @@
             } else {
                 alert('Please enter your email address.');
             }
+        });
+
+        // Bookmark functionality
+        bookmarkBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const resource = this.getAttribute('data-resource');
+                this.innerHTML = this.innerHTML.includes('far') ? 
+                    '<i class="fas fa-bookmark"></i> Bookmarked' : 
+                    '<i class="far fa-bookmark"></i> Bookmark';
+                alert(`Resource "${resource}" bookmarked! In a real implementation, this would save to user profile.`);
+            });
+        });
+
+        // Share functionality
+        shareBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const resource = this.getAttribute('data-resource');
+                alert(`Sharing resource "${resource}". In a real implementation, this would open a share dialog.`);
+            });
         });
 
         // Email validation function
